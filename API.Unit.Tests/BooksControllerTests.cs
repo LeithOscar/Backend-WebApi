@@ -4,7 +4,6 @@ namespace API.Unit.Tests
     using API.Controllers;
     using Microsoft.Extensions.Logging;
     using NSubstitute;
-    using System;
     using Xunit;
 
 
