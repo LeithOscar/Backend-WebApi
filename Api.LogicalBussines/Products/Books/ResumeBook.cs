@@ -1,8 +1,8 @@
 ﻿using Api.LogicalBussines.Interfaces;
 
-namespace Api.LogicalBussines.Products.Books
+namespace Api.LogicalBussines
 {
-    public class ResumeBook : IResumeBook, IProduct
+    public class ResumeBook : ISummaryBook, IProduct
     {
         public string[] Related {get; set;}
         public double Price {get; set;}

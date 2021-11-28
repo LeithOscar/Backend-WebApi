@@ -8,23 +8,23 @@ namespace Api.LogicalBussines
 
     public class Product<T> where T : IBook
     {
-        private List<T> dataModel;
+        private List<T> DataModel;
 
         public Product(List<T> data)
         {
-            this.dataModel = data;
+            this.DataModel = data;
         }
 
         public List<T> Offset(int offset, int count)
         {
 
             bool success = Int64.TryParse(offset.ToString(), out long id);
-            var take = count > this.dataModel.Count() ? this.dataModel.Count() : count;
+            var take = count > this.DataModel.Count() ? this.DataModel.Count() : count;
 
             if (success)
             {
                 //should be a repo to get data
-                return this.dataModel.OrderBy(pr => pr.Id)
+                return this.DataModel.OrderBy(pr => pr.Id)
                                     .Where(x => x.Id != id)
                                     .Take(take)
                                     .ToList();
@@ -36,14 +36,14 @@ namespace Api.LogicalBussines
         public T GetById(long id)
         {
             //should be a repo to get data
-            return this.dataModel.FirstOrDefault(x => x.Id == id);
+            return this.DataModel.FirstOrDefault(x => x.Id == id);
 
         }
 
         public List<T> GetAll()
         {
             //should be a repo to get data
-            return this.dataModel;
+            return this.DataModel;
 
         }
 
@@ -53,7 +53,7 @@ namespace Api.LogicalBussines
             if (item == null)
             {
                 //should be a repo to get data
-                var has = this.dataModel.FirstOrDefault(x => x.Id == item.Id);
+                var has = this.DataModel.FirstOrDefault(x => x.Id == item.Id);
 
                 if (has!= null) { return; }
             }
@@ -64,7 +64,7 @@ namespace Api.LogicalBussines
             if (item != null)
             {
                 //should be a repo to get data
-                var has = this.dataModel.FirstOrDefault(x => x.Id == item.Id);
+                var has = this.DataModel.FirstOrDefault(x => x.Id == item.Id);
 
                 if (has== null) { return; }
 
@@ -75,11 +75,11 @@ namespace Api.LogicalBussines
         public void Delete(long id)
         {
             //should be a repo to get data
-            var exist = this.dataModel.FirstOrDefault(x => x.Id == id);
+            var exist = this.DataModel.FirstOrDefault(x => x.Id == id);
 
             if (exist== null) { return; }
 
-            this.dataModel.Remove(exist);
+            this.DataModel.Remove(exist);
 
         }
 

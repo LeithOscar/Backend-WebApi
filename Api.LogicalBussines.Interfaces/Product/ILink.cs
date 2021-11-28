@@ -1,6 +1,6 @@
 ﻿namespace Api.LogicalBussines.Interfaces
 {
-    public interface IResumeBook :ILinkBook
+    public interface ISummaryBook :ILink
     {
         string[] Related { get; set; }
 

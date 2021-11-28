@@ -1,6 +1,6 @@
 ﻿namespace Api.LogicalBussines.Interfaces
 {
-    public interface ILinkBook
+    public interface ILink
     {
 
         string Link { get; }

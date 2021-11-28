@@ -1,9 +1,10 @@
-﻿using Api.LogicalBussines.Interfaces;
-using Api.LogicalBussines.Products.Books;
-using System.Collections.Generic;
-
+﻿
 namespace Api.LogicalBussines.Mappers
 {
+    using Api.LogicalBussines;
+    using System.Collections.Generic;
+
+
     public class BookMapper
     {
 

@@ -1,6 +1,6 @@
 ﻿namespace Api.LogicalBussines.Interfaces
 {
-    public interface IBook : IResumeBook, ILinkBook, IProduct
+    public interface IBook : ISummaryBook, ILink, IProduct
     {
 
         string Image { get;}
