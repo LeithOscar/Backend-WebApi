@@ -2,9 +2,11 @@
 {
     using Api.LogicalBussines;
     using Api.LogicalBussines.Mappers;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     [Route("api/v{version:ApiVersion}")]
     [ApiController]
@@ -18,6 +20,8 @@
 
         private readonly ILogger<BooksController> _logger;
         private readonly List<Book> data;
+        
+        //Use IoC to initialize on contructor
         private Product<Book> book;
         private readonly BookMapper map;
 
@@ -48,7 +52,8 @@
         /// </summary>
         [HttpGet("items/{offset}/{count}")]
         [MapToApiVersion("1.0")]
-        public IActionResult Offset(int offset, int count)
+
+        public async Task<JsonResult> Offset(int offset, int count)
         {
 
 
@@ -62,10 +67,17 @@
         ///</summary>
         [HttpGet("items/{id}")]
         [MapToApiVersion("1.0")]
-        public IActionResult ById(long id)
-        {
 
-            return new JsonResult(this.book.GetById(id));
+        public async Task<JsonResult> ById(long id)
+        {
+            var has = this.book.GetById(id);
+            if (has!= null)
+            {
+                return new JsonResult(has);
+            }
+            else {
+                return new JsonResult("");
+            }
         }
     }
 }

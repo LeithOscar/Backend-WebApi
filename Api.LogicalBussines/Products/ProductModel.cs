@@ -19,13 +19,14 @@ namespace Api.LogicalBussines
         {
 
             bool success = Int64.TryParse(offset.ToString(), out long id);
+            var take = count > this.dataModel.Count() ? this.dataModel.Count() : count;
 
             if (success)
             {
                 //should be a repo to get data
                 return this.dataModel.OrderBy(pr => pr.Id)
                                     .Where(x => x.Id != id)
-                                    .Take(count)
+                                    .Take(take)
                                     .ToList();
             }
             return null;
