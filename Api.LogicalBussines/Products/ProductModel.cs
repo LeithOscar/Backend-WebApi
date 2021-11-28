@@ -6,7 +6,7 @@ namespace Api.LogicalBussines
     using System.Collections.Generic;
     using System.Linq;
 
-    public class Product<T> where T : IBook
+    public class Product<T> where T : IProduct
     {
         private List<T> DataModel;
 
