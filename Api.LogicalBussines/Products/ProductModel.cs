@@ -39,7 +39,7 @@ namespace Api.LogicalBussines
 
         }
 
-        public List<T> GellAll()
+        public List<T> GetAll()
         {
             //should be a repo to get data
             return this.dataModel;

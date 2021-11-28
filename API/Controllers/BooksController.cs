@@ -43,7 +43,7 @@
         }
 
 
-        ////// <summary>
+        /// <summary>
         ///Retrieves a list of all items in the catalog.
         /// </summary>
         [HttpGet("items/{offset}/{count}")]
@@ -57,9 +57,9 @@
             return new JsonResult(resumes);
         }
 
-        ///<summary>
+        /// <summary>
         ///Retrieves the details for a specified item
-        //////</summary>
+        ///</summary>
         [HttpGet("items/{id}")]
         [MapToApiVersion("1.0")]
         public IActionResult ById(long id)
