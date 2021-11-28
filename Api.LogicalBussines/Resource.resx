@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="1"><value>{"Id":1,"Related":["2"],"Price":10.2,"Link":"/api/v1/items/1","Title":"To Kill a Mockingbird","Terms":["Mockingbird"],"Image":"http://test.com/images/1","Author":"Andrew"}</value></data>
+  <data name="2"><value>{"Id":2,"Related":["2"],"Price":11.3,"Link":"/api/v1/items/2","Title":"Ulysses","Terms":["Ulysses"],"Image":"http://test.com/images/2","Author":"Jace"}</value></data>
+  <data name="3"><value>{"Id":3,"Related":["2"],"Price":12.2,"Link":"/api/v1/items/3","Title":"The Great Gatsby","Terms":["Gatsby"],"Image":"http://test.com/images/3","Author":"Magda"}</value></data>
+  <data name="4"><value>{"Id":4,"Related":["2"],"Price":13.2,"Link":"/api/v1/items/4","Title":"Little Women","Terms":["Little"],"Image":"http://test.com/images/4","Author":"Scott"}</value></data>
+  <data name="5"><value>{"Id":5,"Related":["2"],"Price":14.2,"Link":"/api/v1/items/5","Title":"Pride and Prejudice","Terms":["Prejudice"],"Image":"http://test.com/images/5","Author":"Samanta"}</value></data>
+  <data name="6"><value>{"Id":6,"Related":["2"],"Price":15.2,"Link":"/api/v1/items/6","Title":"In Cold Blood","Terms":["Cold"],"Image":"http://test.com/images/6","Author":"Rius"}</value></data>
+  <data name="7"><value>{"Id":7,"Related":["2"],"Price":16.2,"Link":"/api/v1/items/7","Title":"Oliver Twist","Terms":["Twist"],"Image":"http://test.com/images/7","Author":"McDowell"}</value></data>
+  <data name="8"><value>{"Id":8,"Related":["2"],"Price":17.2,"Link":"/api/v1/items/8","Title":"The Wind in the Willows","Terms":["Willows"],"Image":"http://test.com/images/8","Author":"James"}</value></data>
+  <data name="9"><value>{"Id":9,"Related":["2"],"Price":17.2,"Link":"/api/v1/items/9","Title":"Homage to Catalonia","Terms":["Homage"],"Image":"http://test.com/images/9","Author":"Scoott feur"}</value></data>
+  </root>

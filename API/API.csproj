@@ -11,7 +11,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Api.LogicalBussines\Api.LogicalBussines.csproj" />
+    <ProjectReference Include="..\Api.LogicalBussines\Api.BussinesLogical.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resource.resx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
     <PropertyGroup>
       <GenerateDocumentationFile>true</GenerateDocumentationFile>

@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Unit.Tests", "API.Unit.Tests\API.Unit.Tests.csproj", "{638D3701-98DA-47DD-87B7-54FB91845BD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.LogicalBussines", "Api.LogicalBussines\Api.LogicalBussines.csproj", "{6417F2CD-110F-4AF8-BF45-16388B5CD0BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.BussinesLogical", "Api.LogicalBussines\Api.BussinesLogical.csproj", "{6417F2CD-110F-4AF8-BF45-16388B5CD0BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.LogicalBussines.Interfaces", "Api.LogicalBussines.Interfaces\Api.LogicalBussines.Interfaces.csproj", "{6CA517F0-5652-45A2-8797-3F039A2D812F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.BussinesLogical.Interfaces", "Api.LogicalBussines.Interfaces\Api.BussinesLogical.Interfaces.csproj", "{6CA517F0-5652-45A2-8797-3F039A2D812F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
