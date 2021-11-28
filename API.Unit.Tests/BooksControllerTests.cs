@@ -39,6 +39,8 @@ namespace API.Unit.Tests
             JsonResult rsp = await this.controller.Offset(1, 1).ConfigureAwait(false);
             var items = this.ExtractJsonResultFromList(rsp);
             // assert
+
+            //we have to verify to call mock method
             rsp.Should().NotBeNull();
             items.Should().HaveCount(1);
             items.FirstOrDefault().Id.Should().Be(nextIdExpected); 
@@ -46,7 +48,7 @@ namespace API.Unit.Tests
         }
 
         [Fact]
-        public async void Offset_CountBiggest_thanData_returnAll()
+        public async void Offset_CountBiggest_thanData_returnAllExistents()
         {
             //stubs
             //should be  as mapper and reposiotry
