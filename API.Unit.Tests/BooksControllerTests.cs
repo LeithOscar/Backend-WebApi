@@ -1,14 +1,15 @@
 
 namespace API.Unit.Tests
 {
+    using Api.BussinesLogical.Interfaces;
     using Api.LogicalBussines;
     using API.Controllers;
     using FluentAssertions;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using NSubstitute;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Text.Json;
     using Xunit;
@@ -18,12 +19,13 @@ namespace API.Unit.Tests
     {
         private  BooksController controller;
         private  ILogger<BooksController> logger;
-
+        private readonly IBookValidationRules bookValidationRules;
         public  BooksControllerTests()
         {
             this.logger = Substitute.For<ILogger<BooksController>>();
+            this.bookValidationRules = Substitute.For<IBookValidationRules>();
 
-            this.controller = new BooksController(this.logger);
+            this.controller = new BooksController(this.logger, this.bookValidationRules);
         }
 
 
@@ -66,7 +68,7 @@ namespace API.Unit.Tests
         public async void GetById_ShoulBe_ReturnOne()
         {
             //stubs
-            //should be  as mapper and reposiotry
+            this.bookValidationRules.ValidateId(Arg.Any<long>()).Returns(new List<ValidationResult>());
 
             //action
             JsonResult rsp = await this.controller.ById(1).ConfigureAwait(false);
@@ -81,7 +83,7 @@ namespace API.Unit.Tests
         public async void GetById_NotFound_Succed()
         {
             //stubs
-            //should be  as mapper and reposiotry
+            this.bookValidationRules.ValidateId(Arg.Any<long>()).Returns(new List<ValidationResult>());
 
             //action
             JsonResult rsp = await this.controller.ById(22).ConfigureAwait(false);

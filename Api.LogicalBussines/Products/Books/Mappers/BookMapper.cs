@@ -1,16 +1,17 @@
 ﻿
-namespace Api.LogicalBussines.Mappers
+namespace Api.LogicalBussines
 {
-    using Api.LogicalBussines;
+
+    using Api.LogicalBussines.Interfaces;
     using System.Collections.Generic;
-    public class BookMapper
+    public class BookMapper 
     {
-        public List<ResumeBook> MapTo(List<Book> books) 
+        public List<SummaryBook> MapTo(List<Book> books) 
         {
-            var resumeList = new List<ResumeBook>();
+            var resumeList = new List<SummaryBook>();
             books.ForEach(book =>
             {
-                var resume = new ResumeBook()
+                var resume = new SummaryBook()
                 {
                     Id=book.Id,
                     Link = book.Link,

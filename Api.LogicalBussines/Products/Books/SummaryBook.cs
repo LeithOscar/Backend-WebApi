@@ -2,7 +2,7 @@
 
 namespace Api.LogicalBussines
 {
-    public class ResumeBook : ISummaryBook, IProduct
+    public class SummaryBook : ISummaryBook, IProduct
     {
         public string[] Related {get; set;}
         public double Price {get; set;}

@@ -1,10 +1,12 @@
 ﻿namespace API.Controllers
 {
+    using Api.BussinesLogical.Interfaces;
     using Api.LogicalBussines;
-    using Api.LogicalBussines.Mappers;
-    using Microsoft.AspNetCore.Mvc;
+        using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     [Route("api/v{version:ApiVersion}")]
@@ -18,10 +20,13 @@
         //we must to IoC to initialize on contructor
         private Product<Book> book;
         private readonly BookMapper map;
+        private readonly IBookValidationRules validations;
 
-        public BooksController(ILogger<BooksController> logger)
+        public BooksController(ILogger<BooksController> logger, IBookValidationRules bookValidationRules)
         {
-            _logger = logger;
+            _logger =logger ?? throw new ArgumentNullException(nameof(logger)); ;
+            validations =bookValidationRules ?? throw new ArgumentNullException(nameof(bookValidationRules)); 
+            map = new BookMapper();
 
             //simulate having data but must be a repository injected 
             this.data = new List<Book>()
@@ -38,7 +43,6 @@
             };
             this.book = new Product<Book>(this.data);
             //must be injected
-            this.map = new BookMapper();
         }
 
 
@@ -65,6 +69,13 @@
 
         public async Task<JsonResult> ById(long id)
         {
+
+            var errors = this.validations.ValidateId(id);
+            if (errors.Any())
+            {
+                throw new ArgumentException();
+            }
+
             var has = this.book.GetById(id);
             if (has!= null)
             {

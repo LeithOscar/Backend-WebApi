@@ -1,3 +1,6 @@
+using Api.BussinesLogical.Interfaces;
+using Api.BussinesLogical;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +11,8 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.IO;
 using System.Reflection;
+using Api.LogicalBussines.Interfaces;
+using Api.LogicalBussines;
 
 namespace API
 {
@@ -44,6 +49,14 @@ namespace API
                 config.ReportApiVersions =true;
 
             });
+
+
+            services.AddSingleton<IBookValidationRules, BookValidationRules>();
+
+
+            services.AddSingleton<ISummaryBook, SummaryBook>();
+            services.AddSingleton<IProduct, Product>();
+            services.AddSingleton<IBook, Book>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
