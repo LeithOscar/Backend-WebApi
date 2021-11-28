@@ -2,7 +2,6 @@
 {
     using Api.LogicalBussines;
     using Api.LogicalBussines.Mappers;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using System.Collections.Generic;
@@ -13,15 +12,10 @@
     [ApiVersion("1.0")]
     public class BooksController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<BooksController> _logger;
         private readonly List<Book> data;
         
-        //Use IoC to initialize on contructor
+        //we must to IoC to initialize on contructor
         private Product<Book> book;
         private readonly BookMapper map;
 
@@ -29,7 +23,7 @@
         {
             _logger = logger;
 
-            //simulate having data
+            //simulate having data but must be a repository injected 
             this.data = new List<Book>()
             {
                 new Book() { Id= 1, Title="To Kill a Mockingbird", Price=10.20, Related = new[] { "2" },  Terms= new[] { "Mockingbird" }, Author="Andrew" },
@@ -43,6 +37,7 @@
                 new Book() { Id= 9, Title="Homage to Catalonia", Price=17.20, Related = new[] { "2" }, Terms= new[] { "Homage" }, Author="Scoott feur" },
             };
             this.book = new Product<Book>(this.data);
+            //must be injected
             this.map = new BookMapper();
         }
 
