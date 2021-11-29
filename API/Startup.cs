@@ -13,6 +13,9 @@ using System.IO;
 using System.Reflection;
 using Api.LogicalBussines.Interfaces;
 using Api.LogicalBussines;
+using API.Services;
+using Microsoft.AspNetCore.Authentication;
+using API.Auth;
 
 namespace API
 {
@@ -40,6 +43,33 @@ namespace API
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
+
+
+
+                c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "basic",
+                    In = ParameterLocation.Header,
+                    Description = "Basic Authorization header using the Bearer scheme."
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                          new OpenApiSecurityScheme
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = "basic"
+                                }
+                            },
+                            new string[] {}
+                    }
+                });
+
+
             });
             services.AddApiVersioning(config =>
             {
@@ -50,6 +80,8 @@ namespace API
 
             });
 
+            services.AddAuthentication("BasicAuthentication")
+              .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
             services.AddSingleton<IBookValidationRules, BookValidationRules>();
 
@@ -57,6 +89,7 @@ namespace API
             services.AddSingleton<ISummaryBook, SummaryBook>();
             services.AddSingleton<IProduct, Product>();
             services.AddSingleton<IBook, Book>();
+            services.AddSingleton<ILoginService, LoginService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,6 +104,7 @@ namespace API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseSwagger();
